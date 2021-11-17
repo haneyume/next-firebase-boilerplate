@@ -21,10 +21,6 @@ export const Header = () => {
             next-firebase-boilerplate
           </div>
 
-          <div className="px-3 text-xs text-gray-400 border border-gray-400 rounded-md">
-            {t('light')}
-          </div>
-
           <div className="flex-1" />
 
           <select

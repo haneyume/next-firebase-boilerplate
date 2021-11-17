@@ -13,8 +13,5 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-* {
   outline: none;
 }

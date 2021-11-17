@@ -15,7 +15,18 @@ export const HomePage = () => {
       <Header />
 
       <div className="container mx-auto px-5">
-        <div>Home</div>
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-5">
+          {Array(10)
+            .fill(0)
+            .map((_, index) => (
+              <div key={index} className="rounded-lg overflow-hidden shadow">
+                <img
+                  className="w-full"
+                  src={`https://api.lorem.space/image/movie?w=150&h=220&t=${index}`}
+                />
+              </div>
+            ))}
+        </div>
       </div>
     </>
   );

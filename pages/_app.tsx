@@ -5,6 +5,7 @@ import { AppProvider } from '../components';
 
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
+import '../styles/button.css';
 import '../styles/form.css';
 
 function MyApp({ Component, pageProps }: AppProps) {

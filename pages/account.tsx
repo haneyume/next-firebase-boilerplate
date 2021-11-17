@@ -15,14 +15,20 @@ export default function Account() {
       <Header />
 
       <div className="container mx-auto px-5">
-        <h1>{t('Account')}</h1>
+        <h1 className="text-2xl">{t('Account')}</h1>
 
-        <div
-          className="bg-red-500 text-white w-20 flex justify-center cursor-pointer"
-          onClick={() => appCtx.logout()}
-        >
-          {t('Logout')}
+        <div className="my-10">
+          <p>{appCtx.user?.uid}</p>
+          <p>{appCtx.user?.email}</p>
+          <p>{appCtx.user?.photoURL}</p>
         </div>
+
+        <input
+          className="bg-red-500"
+          type="button"
+          value={t('Logout').toString()}
+          onClick={() => appCtx.logout()}
+        />
       </div>
     </AuthPage>
   );
