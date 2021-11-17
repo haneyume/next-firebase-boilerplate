@@ -4,7 +4,14 @@ import axios from 'axios';
 import './firebase';
 import './i18n';
 
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+import {
+  getAuth,
+  User,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  UserCredential,
+} from 'firebase/auth';
 
 type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
@@ -14,6 +21,9 @@ export interface AppContextProps {
 
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
+
+  loginWithEmail: (email: string, password: string) => Promise<UserCredential>;
+  logout: () => Promise<void>;
 
   showLoading: (value: boolean) => void;
   showNotification: (title: string, body: string) => void;
@@ -72,6 +82,15 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
         user,
         setUser,
+
+        loginWithEmail: (email: string, password: string) => {
+          const auth = getAuth();
+          return signInWithEmailAndPassword(auth, email, password);
+        },
+        logout: () => {
+          const auth = getAuth();
+          return signOut(auth);
+        },
 
         showLoading: () => {},
         showNotification,

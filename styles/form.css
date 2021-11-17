@@ -1,27 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --unit-0: 0px;
+  --unit-1: 0.25rem; /* 4px */
+  --unit-2: 0.5rem; /* 8px */
+  --unit-3: 0.75rem; /* 12px */
+  --unit-4: 1rem; /* 16px */
+  --unit-5: 1.25rem; /* 20px */
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --blue-500: #3b82f6;
+  --red-700: #b91c1c;
+}
 
 form {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
 }
 
 form div {
-  @apply flex flex-col mb-5;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--unit-5);
 }
 
 form label {
-  @apply text-gray-400;
+  color: var(--gray-400);
 }
 
 form input {
-  @apply border border-gray-400 rounded-lg px-3 py-2 outline-none;
+  background-color: var(--gray-200);
+  border-radius: var(--unit-2);
+  padding: var(--unit-3);
 }
 
 form input[type='submit'] {
-  @apply bg-green-800 hover:bg-green-700 text-white cursor-pointer;
+  background-color: var(--blue-500);
+  color: white;
+  cursor: pointer;
+  margin-top: var(--unit-5);
+}
+
+form input[type='submit']:hover {
+  opacity: 0.8;
 }
 
 form span {
-  @apply text-red-700;
+  color: var(--red-700);
 }

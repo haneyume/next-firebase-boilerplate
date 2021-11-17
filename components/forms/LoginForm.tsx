@@ -2,8 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
 import { AppContext } from '../utils/AppContext';
 
 interface FormInput {
@@ -22,12 +20,9 @@ export const LoginForm = () => {
   } = useForm<FormInput>();
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, data.email, data.password).catch(
-      (error) => {
-        alert(error.message);
-      },
-    );
+    appCtx.loginWithEmail(data.email, data.password).catch((error) => {
+      alert(error.message);
+    });
   };
 
   return (
