@@ -15,11 +15,13 @@ export default function Account() {
       <Header />
 
       <div className="container mx-auto px-5">
+        <h1>{t('Account')}</h1>
+
         <div
           className="bg-red-500 text-white w-20 flex justify-center cursor-pointer"
           onClick={() => appCtx.logout()}
         >
-          logout
+          {t('Logout')}
         </div>
       </div>
     </AuthPage>

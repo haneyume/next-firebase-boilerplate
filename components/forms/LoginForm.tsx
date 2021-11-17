@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { AppContext } from '../utils/AppContext';
 
-interface FormInput {
+interface LoginFormInput {
   email: string;
   password: string;
 }
@@ -17,10 +17,11 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<FormInput>();
+  } = useForm<LoginFormInput>();
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
+  const onSubmit: SubmitHandler<LoginFormInput> = (data) => {
     appCtx.loginWithEmail(data.email, data.password).catch((error) => {
+      appCtx.showNotification('Error', error.message);
       alert(error.message);
     });
   };
@@ -30,24 +31,24 @@ export const LoginForm = () => {
       <div>
         <label htmlFor="email">{t('email')}</label>
         <input
-          placeholder="Please input email"
+          placeholder={t('Please input email')}
           type="email"
           {...register('email', { required: true })}
         />
-        {errors.email && <span>This field is required</span>}
+        {errors.email && <span>{t('This field is required')}</span>}
       </div>
 
       <div>
         <label htmlFor="password">{t('password')}</label>
         <input
-          placeholder="Please input password"
+          placeholder={t('Please input password')}
           type="password"
           {...register('password', { required: true })}
         />
-        {errors.password && <span>This field is required</span>}
+        {errors.password && <span>{t('This field is required')}</span>}
       </div>
 
-      <input type="submit" value="Login" />
+      <input type="submit" value={t('Login').toString()} />
     </form>
   );
 };
